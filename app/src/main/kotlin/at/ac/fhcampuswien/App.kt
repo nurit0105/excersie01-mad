@@ -3,9 +3,19 @@
  */
 package at.ac.fhcampuswien
 
-class App {
+ class App {
     // Game logic for a number guessing game
-    fun playNumberGame(digitsToGuess: Int = 4) {
+      fun playNumberGame(digitsToGuess: Int = 4) {
+        /* val stringInput = readln().toInt()
+
+        for(stringInput != generateRandomNonRepeatingNumber(digitsToGuess)){
+            println("Please Enter number $digitsToGuess digits long")
+            println("This was not correct try again, you current  m,n result")
+        }
+
+        println("Congratulations your guess is corect") */
+
+
         //TODO: build a menu which calls the functions and works with the return values
     }
 
@@ -24,8 +34,12 @@ class App {
      * @throws IllegalArgumentException if the length is more than 9 or less than 1.
      */
     val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
+        when {
+            length < 1 -> throw IllegalArgumentException("Length must be >= 1")
+            length > 9 -> throw IllegalArgumentException("Length must be <= 9.")
+            else -> (1..9).shuffled().take(length).joinToString("").toInt()
+        }
         //TODO implement the function
-        0   // return value is a placeholder
     }
 
     /**
@@ -45,12 +59,23 @@ class App {
      * @throws IllegalArgumentException if the inputs do not have the same number of digits.
      */
     val checkUserInputAgainstGeneratedNumber: (Int, Int) -> CompareResult = { input, generatedNumber ->
+        val userString = input.toString()
+        val generatedString = generatedNumber.toString()
+        val n = userString.count { correctDigits -> generatedString.contains(correctDigits)} //amount of correct digits in general
+        val m = userString.zip(generatedString).count { (userDigit, generatedDigit) ->
+            userDigit == generatedDigit} // amount of correct digits at the correct position
+
+        when {
+            userString.length != generatedString.length -> throw IllegalArgumentException("Not the same number of digits")
+        }
         //TODO implement the function
-        CompareResult(0, 0)   // return value is a placeholder
+        CompareResult(n, m)
     }
 }
-
 fun main() {
-    println("Hello World!")
+    println("Welcome to the Number Guessing Game!")
+    val app = App()
+
+
     // TODO: call the App.playNumberGame function with and without default arguments
 }
