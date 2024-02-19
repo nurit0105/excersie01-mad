@@ -10,16 +10,30 @@
 ### Describe how Kotlin handles null safety. What are nullable types and non-null types in Kotlin? (0,5 points)
 
 <span style="color:blue">Provide your answer here! </span>
+<p> 
+ Answer: The default in Kotlin is non-null types, therefore null safety. Null safety means that it is not possible to declare a variable in a way that its value is null.
+<br> Kotlin has this as a way to prevent null-exception and to make the exception handling for us developer easier. <br> Nonetheless it is possible to declare a variable to be null
+if we do it on purpose 
+</p>
 > Note: you can also use code snippets to illustrate your answer. 
 
 ```kotlin 
 // example code snippet
 val a: String = "value" // non-null type
+val b: String? = null // the "?" results in it being a nullable type
+
 ```
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
 <span style="color:blue">Provide your answer here!</span>
+<p> 
+A Lambda Expression could be defined as a variable that already defines what it is supposed to do when executed. 
+A higher order function is e.g. a function that uses lambda expressions as at least one of its arguments.
+  <br>
+  I would store a function inside a variable ( = do a lambda expression) because it makes my code way cleaner and readable,
+especially when I want to use this variable multiple times inside my code.
+</p>
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
@@ -54,4 +68,3 @@ The project is structured into two main Kotlin files:
 **App.kt**: Contains the main game logic and functions.
 
 **AppTest.kt**: Contains unit tests for the various functions in App.kt.
-
