@@ -73,23 +73,23 @@ val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
 
 //TODO implement the function
 val checkUserInputAgainstGeneratedNumber: (Int, Int) -> CompareResult = { input, generatedNumber ->
-    val userString = input.toString()
+    val inputString = input.toString()
     val generatedString = generatedNumber.toString()
 
-    val n = userString.count { correctDigit ->
-        generatedString.any { generatedDigit -> generatedDigit == correctDigit }
-    } // amount of correct digits in general
+    require(inputString.length == generatedString.length) { "Not the same number of digits" }
 
-    val m = userString.zip(generatedString).count { (userDigit, generatedDigit) ->
+    val m = inputString.zip(generatedString).count { (userDigit, generatedDigit) -> // zip --> "pairing" numbers to each other
         userDigit == generatedDigit
-    } // amount of correct digits at the correct position
+    }
 
-    when {
-        userString.length != generatedString.length -> throw IllegalArgumentException("Not the same number of digits")
+    val n = inputString.toSet().count { correctDigit -> // toSet() --> removing doubles
+        generatedString.contains(correctDigit)
     }
 
     CompareResult(n, m)
 }
+
+
 }
 fun main() {
     // TODO: call the App.playNumberGame function with and without default arguments
