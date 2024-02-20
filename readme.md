@@ -28,7 +28,7 @@ val b: String? = null // the "?" results in it being a nullable type
 
 <span style="color:blue">Provide your answer here!</span>
 <p> 
-A Lambda Expression could be defined as a variable that already defines what it is supposed to do when executed. 
+Answer: A Lambda Expression could be defined as a variable that already defines what it is supposed to do when executed. 
 A higher order function is e.g. a function that uses lambda expressions as at least one of its arguments.
   <br>
   I would store a function inside a variable ( = do a lambda expression) because it makes my code way cleaner and readable,
